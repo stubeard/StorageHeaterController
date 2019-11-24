@@ -2,7 +2,8 @@
 #define __HEATER_CONTROL_MODEL_H__
 
 #include "IModel.h"
-
+#include <vector>
+#include <string>
 
 class HeaterControlModel : public IModel
 {
@@ -12,10 +13,10 @@ class HeaterControlModel : public IModel
         virtual void setSchedule( std::string strSchedule );
         virtual void fireModelChanged();
         virtual bool getCurrentState();
-        virtual void addListener( ModelListener* listener );
+        virtual void addListener( IModelListener* listener );
 
     private:
-        std::vector<ModelListener*> m_pListeners;
+        std::vector<IModelListener*> m_pListeners;
         std::string m_strSchedule;
         bool m_bCurrentState;
 };

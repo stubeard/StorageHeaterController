@@ -1,6 +1,6 @@
 #include "ConsoleView.h"
 
-ConsoleView::ConsoleView()
+ConsoleView::ConsoleView(): m_pListeners{}
 {
 
 }
@@ -20,7 +20,10 @@ void ConsoleView::fireViewChanged()
 
 }
 
-void ConsoleView::addListener(ViewListener* listener)
+void ConsoleView::addListener( IViewListener* listener )
 {
-
+    if( listener )
+    {
+        m_pListeners.push_back( std::move( listener ) );
+    }
 }

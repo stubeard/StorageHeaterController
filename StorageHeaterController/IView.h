@@ -17,7 +17,7 @@ class IView
 
         virtual void updateView( bool bState ) = 0;
         virtual void fireViewChanged() = 0;
-        virtual void addListener( ViewListener* listener ) = 0;
+        virtual void addListener( IViewListener* listener ) = 0;
 };
 
 #endif // __IVIEW_H__
