@@ -109,5 +109,7 @@ int main()
     {
         std::cout << ( modeltest.m_success ? "Passed" : "Failed" ) << std::endl;
     }
+
+    return 0;
 }
 
