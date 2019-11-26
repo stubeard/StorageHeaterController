@@ -2,6 +2,7 @@
 #define __HEATER_CONTROL_MODEL_H__
 
 #include "IModel.h"
+#include "Delay.h"
 #include "Defines.h"
 #include <thread>
 #include <deque>
@@ -18,16 +19,24 @@ namespace StorageHeaterControl
             HeaterControlModel( const int_fast64_t &interval = StorageHeaterControl::SCHEDULE_UPDATE_TIME_IN_US );
             virtual ~HeaterControlModel();
             virtual void setSchedule( std::vector<bool> &schedule );
+            virtual void fireModelChanged();
             virtual bool getCurrentState();
             virtual void addListener( IModelListener *listener );
+
+            void setCurrentState( bool state );
 
         private:
             std::vector<IModelListener*> m_listeners;
             std::deque<bool> m_schedule;
             bool m_currentState;
+            Delay<int_fast64_t> m_timer;
             const int_fast64_t m_interval;
+            bool m_running;
+            std::thread m_thread;
 
-            void fireModelChanged();
+            void processSchedule();
+            void timedLoop();
     };
+
 }
 #endif // __HEATER_CONTROL_MODEL_H__

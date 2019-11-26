@@ -21,10 +21,13 @@ namespace StorageHeaterControl
                 virtual ~ModelTest();
                 virtual void modelChanged();
                 void encodeTestString( std::string test );
+                bool m_finished;
+                bool m_success;
             private:
                 IModel &m_model;
                 std::vector<bool> m_test;
                 std::vector<bool> m_result;
+
         };
     }
 }

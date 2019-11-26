@@ -2,17 +2,18 @@
 #include "HeaterControlModel.h"
 #include <algorithm>
 #include <chrono>
+#include <signal.h>
 
 namespace StorageHeaterControl
 {
     namespace Test
     {
-        ModelTest::ModelTest( IModel &model ): m_model{ model }, m_test{}, m_result{}
+        ModelTest::ModelTest( IModel &model ): m_finished{ false }, m_success{ false }, m_model{ model }, m_test{}
         {
             m_model.addListener( this );
 
             encodeTestString( "001011001011010101010100000101011010010100100010" );
-            std::cout << "Input:  ";
+            std::cout << "Input : ";
             for( size_t i = 0 ;
                         i < m_test.size() ;
                      ++ i )
@@ -46,17 +47,18 @@ namespace StorageHeaterControl
                                 m_test.end(),
                                 m_result.begin() ) )
                 {
-                    std::cout << "Success!!";
+                    m_success = true;
                 }
                 else
                 {
-                    std::cout << "Failed!";
+                    m_success = false;
+                    m_finished = true;
                 }
-                std::cout << std::endl;
             }
             else if( m_result.size() > m_test.size() )
             {
-                std::cout << "Failed!";
+                m_success  = false;
+                m_finished = true;
             }
         }
 
@@ -74,14 +76,35 @@ namespace StorageHeaterControl
     }
 }
 
+bool running = true;
+
+static void signal_handler( int s )
+{
+    running = false;
+}
+
 int main()
 {
+    signal( SIGINT, signal_handler );
+
     StorageHeaterControl::HeaterControlModel model{ std::chrono::duration_cast<std::chrono::microseconds>( std::chrono::milliseconds( 100 ) ).count() };
     StorageHeaterControl::Test::ModelTest modeltest{ model };
 
-    while( true )
+    while(   ( running ) &&
+             ( ! modeltest.m_finished )   )
     {
         std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
+        if( modeltest.m_success )
+        {
+            //wait a little longer to make sure no extra states are received
+            std::this_thread::sleep_for( std::chrono::seconds( 3 ) );
+            modeltest.m_finished = true;
+        }
+    }
+
+    if( running ) //check we weren't interrupted
+    {
+        std::cout << ( modeltest.m_success ? "Passed" : "Failed" ) << std::endl;
     }
 }
 
