@@ -23,8 +23,14 @@ namespace StorageHeaterControl
         private:
             std::vector<bool> m_schedule;
             std::vector<IViewListener*> m_listeners;
+            std::thread m_thread;
+            bool m_running;
 
             void fireViewChanged();
+            void timedLoop();
+            void waitForInput();
+            bool validateInput( const std::string &input );
+            void decodeInput( const std::string &input );
     };
 }
 #endif // __CONSOLE_VIEW_H__

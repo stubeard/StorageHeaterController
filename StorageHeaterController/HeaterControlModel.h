@@ -19,7 +19,6 @@ namespace StorageHeaterControl
             HeaterControlModel( const int_fast64_t &interval = StorageHeaterControl::SCHEDULE_UPDATE_TIME_IN_US );
             virtual ~HeaterControlModel();
             virtual void setSchedule( std::vector<bool> &schedule );
-            virtual void fireModelChanged();
             virtual bool getCurrentState();
             virtual void addListener( IModelListener *listener );
 
@@ -34,6 +33,7 @@ namespace StorageHeaterControl
             bool m_running;
             std::thread m_thread;
 
+            void fireModelChanged();
             void processSchedule();
             void timedLoop();
     };

@@ -1,5 +1,6 @@
 #include "ViewTest.h"
 #include "ConsoleView.h"
+#include "Defines.h"
 #include <vector>
 #include <iostream>
 
@@ -33,12 +34,23 @@ namespace StorageHeaterControl
     }
 }
 
+bool running = true;
+
+static void signal_handler( int s )
+{
+    running = false;
+}
+
 int main()
 {
+    std::cout << "Storage Heater Console View Test, Version [" << StorageHeaterControl::VERSION << "] Built on [" << __DATE__ << "] at [" __TIME__ << "]" << std::endl;
+
+    signal( SIGINT, signal_handler );
+
     StorageHeaterControl::ConsoleView view{};
     StorageHeaterControl::Test::ViewTest viewtest{ view };
 
-    while( true )
+    while( running )
     {
         std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
     }

@@ -1,5 +1,6 @@
 #include "ModelTest.h"
 #include "HeaterControlModel.h"
+#include "Defines.h"
 #include <algorithm>
 #include <chrono>
 #include <signal.h>
@@ -85,6 +86,8 @@ static void signal_handler( int s )
 
 int main()
 {
+    std::cout << "Storage Heater Model Test, Version [" << StorageHeaterControl::VERSION << "] Built on [" << __DATE__ << "] at [" __TIME__ << "]" << std::endl;
+
     signal( SIGINT, signal_handler );
 
     StorageHeaterControl::HeaterControlModel model{ std::chrono::duration_cast<std::chrono::microseconds>( std::chrono::milliseconds( 100 ) ).count() };
