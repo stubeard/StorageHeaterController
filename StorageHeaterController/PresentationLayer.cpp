@@ -1,22 +1,25 @@
 #include "PresentationLayer.h"
 
-PresentationLayer::PresentationLayer( IModel& model, IView& view ): m_Model{ model }, m_View{ view }
+namespace StorageHeaterControl
 {
-    m_Model.addListener( this );
-    m_View.addListener( this );
-}
+    PresentationLayer::PresentationLayer( IModel& model, IView& view ): m_model{ model }, m_view{ view }
+    {
+        m_model.addListener( this );
+        m_view.addListener( this );
+    }
 
-PresentationLayer::~PresentationLayer()
-{
+    PresentationLayer::~PresentationLayer()
+    {
 
-}
+    }
 
-void PresentationLayer::viewChanged()
-{
+    void PresentationLayer::viewChanged()
+    {
 
-}
+    }
 
-void PresentationLayer::modelChanged()
-{
+    void PresentationLayer::modelChanged()
+    {
 
+    }
 }

@@ -2,24 +2,23 @@
 #define __IMODEL_H__
 
 #include "IModelListener.h"
-#include <string>
+#include <vector>
 
-/**
- * Interface class for the Model class(es)
+/** \brief Interface class for the Model class(es)
  *
  */
 
-
-class IModel
+namespace StorageHeaterControl
 {
-    public:
-        IModel(){}
-        virtual ~IModel(){}
+    class IModel
+    {
+        public:
+            IModel(){}
+            virtual ~IModel(){}
 
-        virtual void setSchedule( std::string strSchedule ) = 0;
-        virtual void fireModelChanged() = 0;
-        virtual bool getCurrentState() = 0;
-        virtual void addListener( IModelListener* listener ) = 0;
-};
-
+            virtual void setSchedule( std::vector<bool> &schedule ) = 0;
+            virtual bool getCurrentState() = 0;
+            virtual void addListener( IModelListener *listener ) = 0;
+    };
+}
 #endif // __IMODEL_H__

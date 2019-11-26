@@ -4,10 +4,10 @@
 
 int main()
 {
-    HeaterControlModel model{};
-    ConsoleView view{};
+    StorageHeaterControl::HeaterControlModel model{};
+    StorageHeaterControl::ConsoleView view{};
 
-    PresentationLayer presentationLayer{ model, view };
+    StorageHeaterControl::PresentationLayer presentationLayer{ model, view };
 
     return 0;
 }

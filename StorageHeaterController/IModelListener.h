@@ -3,17 +3,18 @@
 
 #include <iostream>
 
-/**
- * Interface class for callbacks to the Presentation Layer class
+/** \brief Interface class for callbacks to the Presentation Layer class
  *
  */
 
-class IModelListener
+namespace StorageHeaterControl
 {
-    public:
-        IModelListener(){}
-        virtual ~IModelListener(){}
-        virtual void modelChanged() = 0;
-};
-
+    class IModelListener
+    {
+        public:
+            IModelListener(){}
+            virtual ~IModelListener(){}
+            virtual void modelChanged() = 0;
+    };
+}
 #endif // __IMODELLISTENER_H__

@@ -7,17 +7,23 @@
 #include "IModelListener.h"
 #include "IViewListener.h"
 
-class PresentationLayer : public IModelListener, public IViewListener
+namespace StorageHeaterControl
 {
-    public:
-        PresentationLayer( IModel& model, IView& view );
-        virtual ~PresentationLayer();
-        virtual void viewChanged();
-        virtual void modelChanged();
+    /** \brief Class for communicating between View and Model
+     *
+     */
 
-    private:
-        IModel& m_Model;
-        IView&  m_View;
-};
+    class PresentationLayer : public IModelListener, public IViewListener
+    {
+        public:
+            PresentationLayer( IModel &model, IView &view );
+            virtual ~PresentationLayer();
+            virtual void viewChanged();
+            virtual void modelChanged();
 
+        private:
+            IModel &m_model;
+            IView  &m_view;
+    };
+}
 #endif // __PRESENTATION_LAYER_H__

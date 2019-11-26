@@ -1,29 +1,37 @@
 #include "ConsoleView.h"
 
-ConsoleView::ConsoleView(): m_pListeners{}
+namespace StorageHeaterControl
 {
-
-}
-
-ConsoleView::~ConsoleView()
-{
-
-}
-
-void ConsoleView::updateView( bool bState )
-{
-
-}
-
-void ConsoleView::fireViewChanged()
-{
-
-}
-
-void ConsoleView::addListener( IViewListener* listener )
-{
-    if( listener )
+    ConsoleView::ConsoleView(): m_schedule{}, m_listeners{}
     {
-        m_pListeners.push_back( std::move( listener ) );
+
+    }
+
+    ConsoleView::~ConsoleView()
+    {
+
+    }
+
+    void ConsoleView::updateView( bool bState )
+    {
+
+    }
+
+    void ConsoleView::fireViewChanged()
+    {
+
+    }
+
+    void ConsoleView::addListener( IViewListener *listener )
+    {
+        if( listener )
+        {
+            m_listeners.push_back( std::move( listener ) );
+        }
+    }
+
+    std::vector<bool>& ConsoleView::getSchedule()
+    {
+        return m_schedule;
     }
 }
