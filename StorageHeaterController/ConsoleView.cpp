@@ -3,7 +3,7 @@
 
 namespace StorageHeaterControl
 {
-    ConsoleView::ConsoleView(): m_schedule{}, m_listeners{}, m_thread{ ConsoleView::timedLoop, this }
+    ConsoleView::ConsoleView(): m_schedule{}, m_listeners{}, m_thread{ ConsoleView::timedLoop, this }, m_lock{}
     {
         m_thread.detach();
         std::cout << "Please enter a schedule for the next " << ( StorageHeaterControl::PERIODS_IN_SCHEDULE / 2 ) << " hours." << std::endl;
@@ -42,8 +42,9 @@ namespace StorageHeaterControl
         }
     }
 
-    std::vector<bool>& ConsoleView::getSchedule()
+    std::vector<bool> ConsoleView::getSchedule()
     {
+        std::lock_guard<std::mutex> lg{ m_lock };
         return m_schedule;
     }
 
@@ -105,6 +106,7 @@ namespace StorageHeaterControl
 
     void ConsoleView::decodeInput( const std::string& input )
     {
+        m_lock.lock();
         m_schedule.clear();
 
         for( size_t i = 0 ;
@@ -113,5 +115,6 @@ namespace StorageHeaterControl
         {
             m_schedule.push_back( input[ i ] != '0' );
         }
+        m_lock.unlock();
     }
 }

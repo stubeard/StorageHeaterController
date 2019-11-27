@@ -27,7 +27,6 @@ namespace StorageHeaterControl
                 IModel &m_model;
                 std::vector<bool> m_test;
                 std::vector<bool> m_result;
-
         };
     }
 }

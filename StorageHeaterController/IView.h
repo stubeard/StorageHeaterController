@@ -19,7 +19,7 @@ namespace StorageHeaterControl
 
             virtual void updateView( bool state ) = 0;
             virtual void addListener( IViewListener *listener ) = 0;
-            virtual std::vector<bool> &getSchedule() = 0;
+            virtual std::vector<bool> getSchedule() = 0;
     };
 }
 #endif // __IVIEW_H__

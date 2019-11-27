@@ -16,7 +16,7 @@ namespace StorageHeaterControl
             IModel(){}
             virtual ~IModel(){}
 
-            virtual void setSchedule( std::vector<bool> &schedule ) = 0;
+            virtual void setSchedule( const std::vector<bool> &schedule ) = 0;
             virtual bool getCurrentState() = 0;
             virtual void addListener( IModelListener *listener ) = 0;
     };

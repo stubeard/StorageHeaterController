@@ -5,7 +5,7 @@
 namespace StorageHeaterControl
 {
     HeaterControlModel::HeaterControlModel( const int_fast64_t &interval )
-    : m_listeners{}, m_currentState{ false }, m_timer{}, m_interval{ interval }, m_running{ true }, m_thread{ HeaterControlModel::timedLoop, this }
+    : m_listeners{}, m_currentState{ false }, m_timer{}, m_interval{ interval }, m_running{ true }, m_thread{ HeaterControlModel::timedLoop, this }, m_lock{}
     {
         m_thread.detach();
     }
@@ -19,14 +19,16 @@ namespace StorageHeaterControl
         }
     }
 
-    void HeaterControlModel::setSchedule( std::vector<bool> &schedule )
+    void HeaterControlModel::setSchedule( const std::vector<bool> &schedule )
     {
+        m_lock.lock();
         m_schedule.clear();
 
         for( bool eachBool : schedule )
         {
             m_schedule.push_back( std::move( eachBool ) );
         }
+        m_lock.unlock();
         processSchedule();
     }
 
@@ -53,11 +55,13 @@ namespace StorageHeaterControl
 
     void HeaterControlModel::processSchedule()
     {
+        m_lock.lock();
         if( ! m_schedule.empty() )
         {
             setCurrentState( m_schedule.front() );
             m_schedule.pop_front();
         }
+        m_lock.unlock();
         m_timer.set( m_interval );
     }
 

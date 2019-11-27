@@ -4,6 +4,7 @@
 #include "IView.h"
 #include <vector>
 #include <thread>
+#include <mutex>
 
 namespace StorageHeaterControl
 {
@@ -18,13 +19,14 @@ namespace StorageHeaterControl
 
             virtual void updateView( bool state );
             virtual void addListener( IViewListener *listener );
-            virtual std::vector<bool> &getSchedule();
+            virtual std::vector<bool> getSchedule();
 
         private:
             std::vector<bool> m_schedule;
             std::vector<IViewListener*> m_listeners;
             std::thread m_thread;
             bool m_running;
+            std::mutex m_lock;
 
             void fireViewChanged();
             void timedLoop();
