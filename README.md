@@ -1,12 +1,12 @@
 # StorageHeaterController
 Demo project for a Storage Heater Controller
 
-##Toolchain:
+## Toolchain:
 
 CMake 		Version: 3.15.5
 MingGW-w64 	Version: 8.1.0,	Architecture: x64_86, Threads: posix, Exception: seh (Structured Exception Handling), Revision: 0
 
-##Building
+## Building
 
 Open a windows console, change to the source code directory and type:
 	
@@ -15,13 +15,13 @@ Open a windows console, change to the source code directory and type:
 	cmake -G "MinGW Makefiles" ..
 	mingw32-make
 
-##Running
+## Running
 
 The application can be run by typing:
 
 	StorageHeaterController.exe
 
-##Testing
+## Testing
 
 Tests have been provided which can be run by typing:
 
@@ -32,11 +32,11 @@ or by running:
 
 	mingw32-make test
 
-##Notes
+## Notes
 ViewTest does not currently work with CTest. As it uses std::cin and std:cout, If this were a commercial project, I would create a test application to run ViewTest, feed it predefined strings and check it's output stream for the correct response. I would also add extra strings to the ModelTest application. Both test applications work well with manual input.
 
 
-###Assumptions
+### Assumptions
 The specification says that the schedule will be input for the following 24 hours, but does not say whether it should be synchronised with each half hour in the day e.g. (00:00, 00:30, 01:00, ... 23:30), I have decided to simply run the schedule starting from the time when it was input.
 Each new schedule overwrites the previous one, even if it has not been completed.
 On completing the schedule, the application will no longer output any changes, until a new schedule is input.
