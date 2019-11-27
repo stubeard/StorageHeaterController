@@ -17,8 +17,28 @@ namespace StorageHeaterControl
             ConsoleView();
             virtual ~ConsoleView();
 
+            /**
+             * \brief   Updates the IView's output with the current state.
+             *
+             * \param   A bool indicating the required state.
+             */
             virtual void updateView( bool state );
+
+            /**
+             * \brief   Adds a listener to the ConsoleView.
+             *
+             * The ConsoleView class calls the \ref IViewListener::viewChanged() member function
+             * of the IViewListener whenever it's state changes.
+             *
+             * \param   A pointer to the IViewListener instance.
+             */
             virtual void addListener( IViewListener *listener );
+
+            /**
+             * \brief   Returns the schedule input into the ConsoleView via std::cin.
+             *
+             * \return   A vector of bools containing the required schedule.
+             */
             virtual std::vector<bool> getSchedule();
 
         private:

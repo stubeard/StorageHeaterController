@@ -18,7 +18,15 @@ namespace StorageHeaterControl
         public:
             PresentationLayer( IModel &model, IView &view );
             virtual ~PresentationLayer();
+
+            /**
+             * \brief   Called when the IView's state has changed.
+             */
             virtual void viewChanged();
+
+            /**
+             * \brief   Called when the IModel's state has changed.
+             */
             virtual void modelChanged();
 
         private:

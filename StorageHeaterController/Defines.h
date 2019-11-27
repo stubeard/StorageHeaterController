@@ -4,6 +4,9 @@
 #include <string>
 #include <chrono>
 
+/** \brief The StorageHeaterControl application.
+ *
+ */
 namespace StorageHeaterControl
 {
     const std::string VERSION{ "01.0" };

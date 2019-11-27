@@ -6,6 +6,9 @@
 
 namespace StorageHeaterControl
 {
+    /** \brief Test Classes for the StorageHeaterControl application.
+     *
+     */
     namespace Test
     {
         /** \brief Class for testing View implementation

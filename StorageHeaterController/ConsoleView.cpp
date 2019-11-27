@@ -34,7 +34,7 @@ namespace StorageHeaterControl
         }
     }
 
-    void ConsoleView::addListener( IViewListener* listener )
+    void ConsoleView::addListener( IViewListener *listener )
     {
         if( listener )
         {
@@ -72,15 +72,15 @@ namespace StorageHeaterControl
         }
     }
 
-    bool ConsoleView::validateInput( const std::string& input )
+    bool ConsoleView::validateInput( const std::string &input )
     {
         bool valid{ true };
 
         if( input.size() == StorageHeaterControl::PERIODS_IN_SCHEDULE )
         {
             for( size_t i = 0 ;
-                     i < input.size() ;
-                  ++ i )
+                        i < input.size() ;
+                     ++ i )
             {
                 //only 0 and 1 are acceptable;
                 if(   ( input[ i ] != '0' ) &&
@@ -104,7 +104,7 @@ namespace StorageHeaterControl
         return valid;
     }
 
-    void ConsoleView::decodeInput( const std::string& input )
+    void ConsoleView::decodeInput( const std::string &input )
     {
         m_lock.lock();
         m_schedule.clear();

@@ -3,17 +3,20 @@
 
 #include <iostream>
 
-/** \brief Interface class for callbacks to the Presentation Layer class
- *
- */
-
 namespace StorageHeaterControl
 {
+    /** \brief Interface class for callbacks to the Presentation Layer class
+     * from an instance of IModel
+     */
     class IModelListener
     {
         public:
             IModelListener(){}
             virtual ~IModelListener(){}
+
+            /**
+             * \brief   Should be called when the IModel's state has changed.
+             */
             virtual void modelChanged() = 0;
     };
 }
