@@ -1,0 +1,30 @@
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/Delay.h:25: warning: argument 'the' of command @param is not found in the argument list of Delay< T >::set(T value)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/Delay.h:29: warning: The following parameters of Delay::set(T value) are not documented:
+  parameter 'value'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/Delay.h:31: warning: argument 'the' of command @param is not found in the argument list of Delay< T >::update(T interval)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/Delay.h:35: warning: The following parameters of Delay::update(T interval) are not documented:
+  parameter 'interval'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/ConsoleView.h:27: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::ConsoleView::addListener(IViewListener *listener)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/ConsoleView.h:35: warning: The following parameters of StorageHeaterControl::ConsoleView::addListener(IViewListener *listener) are not documented:
+  parameter 'listener'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/ConsoleView.h:20: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::ConsoleView::updateView(bool state)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/ConsoleView.h:25: warning: The following parameters of StorageHeaterControl::ConsoleView::updateView(bool state) are not documented:
+  parameter 'state'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/HeaterControlModel.h:37: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::HeaterControlModel::addListener(IModelListener *listener)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/HeaterControlModel.h:45: warning: The following parameters of StorageHeaterControl::HeaterControlModel::addListener(IModelListener *listener) are not documented:
+  parameter 'listener'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/HeaterControlModel.h:23: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::HeaterControlModel::setSchedule(const std::vector< bool > &schedule)
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/HeaterControlModel.h:28: warning: The following parameters of StorageHeaterControl::HeaterControlModel::setSchedule(const std::vector< bool > &schedule) are not documented:
+  parameter 'schedule'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IModel.h:32: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::IModel::addListener(IModelListener *listener)=0
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IModel.h:40: warning: The following parameters of StorageHeaterControl::IModel::addListener(IModelListener *listener)=0 are not documented:
+  parameter 'listener'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IModel.h:18: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::IModel::setSchedule(const std::vector< bool > &schedule)=0
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IModel.h:23: warning: The following parameters of StorageHeaterControl::IModel::setSchedule(const std::vector< bool > &schedule)=0 are not documented:
+  parameter 'schedule'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IView.h:26: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::IView::addListener(IViewListener *listener)=0
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IView.h:34: warning: The following parameters of StorageHeaterControl::IView::addListener(IViewListener *listener)=0 are not documented:
+  parameter 'listener'
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IView.h:19: warning: argument 'A' of command @param is not found in the argument list of StorageHeaterControl::IView::updateView(bool state)=0
+C:/Repos/Indra/StorageHeaterController/StorageHeaterController/IView.h:24: warning: The following parameters of StorageHeaterControl::IView::updateView(bool state)=0 are not documented:
+  parameter 'state'

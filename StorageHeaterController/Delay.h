@@ -1,12 +1,9 @@
 #ifndef __DELAY_H__
 #define __DELAY_H__
 
-/** \brief Template Class implementing a countdown timer.
- *
- */
 /** \brief A template class to provide a countdown timer.
  *
- *  The Delay is using the set() member function to the required delay time.
+ *  The Delay is set using the set() member function to the required delay time.
  *  The update() member function should be called periodically to decrement the counter.
  *  The expired() member function is called to test whether the counter has reached zero.
  *
