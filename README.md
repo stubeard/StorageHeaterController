@@ -41,7 +41,7 @@ The specification says that the schedule will be input for the following 24 hour
 Each new schedule overwrites the previous one, even if it has not been completed.
 On completing the schedule, the application will no longer output any changes, until a new schedule is input.
 
-If this were a commercial project, I would query points these with the customer rather than make any assumptions.
+If this were a commercial project, I would query these points with the customer rather than make any assumptions.
 
 Internally, the View class decodes the input string and sets a vector of bools containing the schedule which is passed to the Model. This was done to make it easier to abstract the view from the console.  
 
